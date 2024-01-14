@@ -1,12 +1,12 @@
-import torch
 from torch import nn
+from config import ngpu, nz, ngf, nc
 
 class Generator(nn.Module):
-    def __init__(self, nz, ngf, nc, ngpu:int=0):
+    def __init__(self):
         super(Generator, self).__init__()
-        self.ngpu =  ngpu
+        self.ngpu = ngpu
         self.main = nn.Sequential(
-             # input is Z, going into a convolution
+            # input is Z, going into a convolution
             nn.ConvTranspose2d( nz, ngf * 8, 4, 1, 0, bias=False),
             nn.BatchNorm2d(ngf * 8),
             nn.ReLU(True),
@@ -28,5 +28,5 @@ class Generator(nn.Module):
             # state size. ``(nc) x 64 x 64``
         )
 
-    def forward(self, x):
-        return self.main(x)
+    def forward(self, input):
+        return self.main(input)
