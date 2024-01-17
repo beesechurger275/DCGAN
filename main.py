@@ -3,9 +3,9 @@ from generator import Generator
 import torchvision.utils as vutils
 import matplotlib.pyplot as plt
 import numpy as np
+from config import nz
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
-nz = 100
 
 generator = Generator().to(device)
 
