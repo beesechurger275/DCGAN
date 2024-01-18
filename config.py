@@ -1,16 +1,16 @@
 import torch
 
-generator_load = "weights/generator.pth"
+generator_load = "weights/generator_10ep.pth"
 discriminator_load = "weights/discriminator.pth"
 
-generator_save = "weights/generator.pth"
+generator_save = "weights/generator_10ep.pth"
 discriminator_save = "weights/discriminator.pth"
 
 # Root directory for dataset
 dataroot = "data/img_align_celeba/"
 
 # Number of training epochs
-num_epochs = 30
+num_epochs = 10
 
 # Number of workers for dataloader
 workers = 0
