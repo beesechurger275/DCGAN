@@ -1,7 +1,16 @@
 import torch
 
+generator_load = "weights/generator.pth"
+discriminator_load = "weights/discriminator.pth"
+
+generator_save = "weights/generator.pth"
+discriminator_save = "weights/discriminator.pth"
+
 # Root directory for dataset
-dataroot = "data/"
+dataroot = "data/img_align_celeba/"
+
+# Number of training epochs
+num_epochs = 30
 
 # Number of workers for dataloader
 workers = 0
@@ -24,9 +33,6 @@ ngf = 64
 
 # Size of feature maps in discriminator
 ndf = 64
-
-# Number of training epochs
-num_epochs = 300
 
 # Learning rate for optimizers
 lr = 0.0002
