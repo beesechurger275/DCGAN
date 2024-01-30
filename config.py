@@ -10,7 +10,7 @@ discriminator_save = "weights/discriminator.pth"
 dataroot = "data/img_align_celeba/"
 
 # Number of training epochs
-num_epochs = 30
+num_epochs = 10
 
 # Number of workers for dataloader
 workers = 0

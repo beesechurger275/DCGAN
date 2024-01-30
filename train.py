@@ -12,12 +12,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 dataset = datasets.ImageFolder(dataroot, 
-                               transform=transform.Compose([
-                                   transform.Resize(image_size),
-                                   transform.CenterCrop(image_size),
-                                   transform.ToTensor(),
-                                   transform.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-                               ]))
+transform=transform.Compose([
+    transform.Resize(image_size),
+    transform.CenterCrop(image_size),
+    transform.ToTensor(),
+    transform.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+]))
 
 dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=workers)
 
@@ -38,6 +38,10 @@ def weights_init(m):
 
 generator = Generator().to(device)
 discriminator = Discriminator().to(device)
+
+if input("Load model? (y/n)").lower() == "y":
+    generator.load_state_dict(torch.load(generator_load))
+    discriminator.load_state_dict(torch.load(discriminator_load))
 
 generator.apply(weights_init)
 discriminator.apply(weights_init)
@@ -92,6 +96,7 @@ try:
             if iters % 500 == 0 or iters == len(dataloader):
                 print(f"[{epoch + 1}/{num_epochs}], [{iters}/{len(dataloader)}], err_g: {err_g:2f}, err_d: {err_d:2f} err_d_real: {err_d_real:2f}, err_d_fake: {err_d_fake:2f}")
                 
+                """ # Uncomment to view model progress
                 with torch.no_grad():
                     prev = generator(fixed_noise).detach().cpu()
                     img_list.append(prev)
@@ -101,6 +106,7 @@ try:
                 plt.title("Generated Images")
                 plt.imshow(np.transpose(vutils.make_grid(prev, padding=2, normalize=True), (1,2,0)))
                 plt.show()
+                """
                 
 
 except KeyboardInterrupt:
@@ -110,7 +116,7 @@ except Exception as e:
     print("exception!")
     print(e)
 
-
-if input("save model? (y/n) ").lower() != "n":
-    torch.save(generator.state_dict(), "weights/generator.pth")
-    torch.save(discriminator.state_dict(), "weights/discriminator.pth")
+input_ = input("save model? (y/n) ").lower()
+if input_ != "n" and input_ != "no":
+    torch.save(generator.state_dict(), generator_save)
+    torch.save(discriminator.state_dict(), discriminator_save)
