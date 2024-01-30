@@ -12,12 +12,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 dataset = datasets.ImageFolder(dataroot, 
-                               transform=transform.Compose([
-                                   transform.Resize(image_size),
-                                   transform.CenterCrop(image_size),
-                                   transform.ToTensor(),
-                                   transform.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-                               ]))
+transform=transform.Compose([
+    transform.Resize(image_size),
+    transform.CenterCrop(image_size),
+    transform.ToTensor(),
+    transform.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+]))
 
 dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=workers)
 
