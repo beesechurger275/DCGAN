@@ -6,11 +6,11 @@
 3. Create folder weights/ to store weights  
 4. Create venv  
 	* ```python -m venv venv```  
-5. Install dependencies  
-	* ```pip -r requirements.txt```  
-6. Activate venv
+5. Activate venv
 	* ```venv/Scripts/activate```  
 	* ```source venv/bin/activate```  
+6. Install dependencies  
+	* ```pip -r requirements.txt```  
 
 ### Training a model:
 
@@ -18,7 +18,7 @@
 	* Unzip img_align_celeba into data/ 
 	* Create custom dataset (see below)  
 2. Change num_epochs in config.py to desired amount  
-3. Run train.py  
+3. Run train.py (make sure venv is activated) 
 4. Model outputs to weights/generator.pth and weights/discriminator.pth by default  
 
 ### To run pretrained model:
