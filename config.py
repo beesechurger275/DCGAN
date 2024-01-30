@@ -1,9 +1,9 @@
 import torch
 
-generator_load = "weights/generator_10ep.pth"
+generator_load = "weights/generator.pth"
 discriminator_load = "weights/discriminator.pth"
 
-generator_save = "weights/generator_10ep.pth"
+generator_save = "weights/generator.pth"
 discriminator_save = "weights/discriminator.pth"
 
 # Root directory for dataset

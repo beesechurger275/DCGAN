@@ -116,7 +116,7 @@ except Exception as e:
     print("exception!")
     print(e)
 
-
-if input("save model? (y/n) ").lower() != "n":
+input_ = input("save model? (y/n) ").lower()
+if input_ != "n" and input_ != "no":
     torch.save(generator.state_dict(), generator_save)
     torch.save(discriminator.state_dict(), discriminator_save)

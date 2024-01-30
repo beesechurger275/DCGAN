@@ -4,6 +4,13 @@
 1. Download .zip of project  
 2. Extract to folder  
 3. Create folder weights/ to store weights  
+4. Create venv  
+	* ```python -m venv venv```  
+5. Install dependencies  
+	* ```pip -r requirements.txt```  
+6. Activate venv
+	* ```venv/Scripts/activate```  
+	* ```source venv/bin/activate```  
 
 ### Training a model:
 
@@ -12,6 +19,7 @@
 	* Create custom dataset (see below)  
 2. Change num_epochs in config.py to desired amount  
 3. Run train.py  
+4. Model outputs to weights/generator.pth and weights/discriminator.pth by default  
 
 ### To run pretrained model:
 
@@ -22,8 +30,8 @@
 # Dataset Structure
   
 ├─── data/  
-│└─── folder-name-doesnt-matter/  
-│└───── images  
+│├─── folder-name-doesnt-matter/  
+││└───── images  
   
 * Put the path to data/ into config.py's dataroot variable  
 * This should work with any collection of images  
