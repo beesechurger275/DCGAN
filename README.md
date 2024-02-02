@@ -10,7 +10,7 @@
 	* ```venv/Scripts/activate```  
 	* ```source venv/bin/activate```  
 6. Install dependencies  
-	* ```pip -r requirements.txt```  
+	* ```pip install -r requirements.txt```  
 
 ### Training a model:
 
