@@ -7,7 +7,7 @@ generator_save = "weights/generator.pth"
 discriminator_save = "weights/discriminator.pth"
 
 # Root directory for dataset
-dataroot = "data/img_align_celeba/"
+dataroot = "data/"
 
 # Number of training epochs
 num_epochs = 10
@@ -40,7 +40,4 @@ lr = 0.0002
 # Beta1 hyperparameter for Adam optimizers
 beta1 = 0.5
 
-# Number of GPUs available. Use 0 for CPU mode.
-ngpu = 1
-
-device = torch.device("cuda:0" if (torch.cuda.is_available() and ngpu > 0) else "cpu")
+device = "cuda" if torch.cuda.is_available() else "cpu"
