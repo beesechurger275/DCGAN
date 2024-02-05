@@ -69,16 +69,16 @@ try:
             real_cpu = data[0].to(device)
             b_size = real_cpu.size(0)
             label = torch.full((b_size,), real_label, dtype=torch.float, device=device)
-            out = discriminator(real_cpu).view(-1)
-            err_d_real = loss_fn(out, label)
+            out: torch.Tensor = discriminator(real_cpu).view(-1)
+            err_d_real: torch.Tensor = loss_fn(out, label)
             err_d_real.backward()
             d_x = out.mean().item()
 
-            fake = generator(torch.randn(b_size, nz, 1, 1, device=device))
+            fake: torch.Tensor = generator(torch.randn(b_size, nz, 1, 1, device=device))
             label.fill_(fake_label)
 
-            out = discriminator(fake.detach()).view(-1)
-            err_d_fake = loss_fn(out, label)
+            out: torch.Tensor = discriminator(fake.detach()).view(-1)
+            err_d_fake: torch.Tensor = loss_fn(out, label)
             err_d_fake.backward()
             d_g_z1 = out.mean().item()
             err_d = err_d_real + err_d_fake
@@ -86,8 +86,8 @@ try:
 
             generator.zero_grad()
             label.fill_(real_label)
-            out = discriminator(fake).view(-1)
-            err_g = loss_fn(out, label)
+            out: torch.Tensor = discriminator(fake).view(-1)
+            err_g: torch.Tensor = loss_fn(out, label)
             err_g.backward()
             d_g_z2 = out.mean().item()
             optimizerG.step()
