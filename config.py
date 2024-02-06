@@ -6,6 +6,9 @@ discriminator_load = "weights/discriminator.pth"
 generator_save = "weights/generator.pth"
 discriminator_save = "weights/discriminator.pth"
 
+# number of images generated at a time when running main.py
+num_generated_images = 64
+
 # Root directory for dataset
 dataroot = "data/"
 

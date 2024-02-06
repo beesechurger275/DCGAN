@@ -3,16 +3,19 @@ from generator import Generator
 import torchvision.utils as vutils
 import matplotlib.pyplot as plt
 import numpy as np
-from config import device, nz, generator_load
+import math
+from config import device, nz, generator_load, num_generated_images
 
 generator = Generator().to(device)
 
 generator.load_state_dict(torch.load(generator_load))
 
 with torch.no_grad():
-    img = generator(torch.randn(64, nz, 1, 1, device=device)).detach().cpu()
+    img: torch.Tensor = generator(torch.randn(num_generated_images, nz, 1, 1, device=device)).detach().cpu()
 
-img = vutils.make_grid(img, padding=2, normalize=True)
+rows = int(math.sqrt(num_generated_images))
+
+img = vutils.make_grid(img, padding=2, normalize=True, nrow=rows)
 
 plt.figure(figsize=(8,8))
 plt.axis("off")
